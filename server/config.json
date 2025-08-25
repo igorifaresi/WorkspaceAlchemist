@@ -1,0 +1,6 @@
+{
+  "port": 4242,
+  "locations": [
+    { "name": "Local File", "kind": "file", "file_path": "sources.json" }
+  ]
+}

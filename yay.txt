@@ -1,0 +1,1367 @@
+--------------------------------------
+Welcome to WorkspaceAlchemist builder!
+--------------------------------------
+
+---> Executing: odin run client -debug -collection:sdk=sdk/odin -custom-attribute:plugin_callable -out:build/client.exe
+clicked *
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-0"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-1"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-2"]
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-3"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-4"]
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-5"]
+YAY
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-9"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-8"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-10"]
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-6"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-11"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-12"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-7"]
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-18"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-16"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-17"]
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-13"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-15"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-14"]
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-20"]
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-22"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-28"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-24"]
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-19"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-29"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-23"]
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-21"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-26"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-27"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-31"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-32"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-30"]
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-35"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-36"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-33"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-34"]
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-25"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-37"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-39"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-40"]
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-41"]
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-43"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-45"]
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-38"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-46"]
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-44"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-42"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-49"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-47"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-48"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-50"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-51"]
+YAY
+RESOURCE =  1869908656984
+HANDLE =  0x80001482
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80001482
+Success!
+received surface_handle =  0x80001482
+YAY
+YAY
+RESOURCE =  2253112672408
+HANDLE =  0x800035C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800035C2
+received surface_handle =  0x800035C2
+Success!
+RESOURCE =  2249411263272
+HANDLE =  0x80003602
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003602
+Success!
+received surface_handle =  0x80003602
+YAY
+RESOURCE =  2450956601576
+HANDLE =  0x80003A82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003A82
+Success!
+received surface_handle =  0x80003A82
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-56"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-52"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-55"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-53"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-54"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-57"]
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+Unsupported_Type_Error{id = IO, hdr = %!(BAD ENUM VALUE=0), add = %!(BAD ENUM VALUE=0)}
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-59"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-58"]
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-61"]
+YAY
+YAY
+YAY
+RESOURCE =  2468184648248
+HANDLE =  0x80003A42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003A42
+Success!
+received surface_handle =  0x80003A42
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-60"]
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-62"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-63"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-74"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-64"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-65"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-66"]
+YAY
+RESOURCE =  2126527187144
+HANDLE =  0x80003B02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003B02
+received surface_handle =  0x80003B02
+YAY
+YAY
+Success!
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+Unsupported_Type_Error{id = IO, hdr = %!(BAD ENUM VALUE=0), add = %!(BAD ENUM VALUE=0)}
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-67"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-69"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-70"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-68"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-71"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-72"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-73"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-76"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-75"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-77"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-78"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-79"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-80"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-81"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-82"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-83"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-84"]
+YAY
+YAY
+YAY
+YAY
+RESOURCE =  1793697040744
+HANDLE =  0x80003AC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003AC2
+received surface_handle =  0x80003AC2
+Success!
+RESOURCE =  2466758523144
+HANDLE =  0x80003B82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003B82
+Success!
+received surface_handle =  0x80003B82
+YAY
+YAY
+YAY
+YAY
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-85"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-86"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-87"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-88"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-90"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-89"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-91"]
+YAY
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-92"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-93"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-94"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-95"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-96"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-98"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-97"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-99"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-100"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-102"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-101"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-103"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-105"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-104"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-106"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-107"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-108"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-109"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-110"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-111"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-112"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-113"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-114"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-115"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-116"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-117"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-118"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-120"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-119"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-123"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-122"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-130"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-129"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-131"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-121"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-124"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-126"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-127"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-125"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-128"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-132"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-133"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-134"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-135"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-136"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-137"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-138"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-139"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-141"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-140"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-143"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-148"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-146"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-142"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-145"]
+RESOURCE =  2307805198088
+HANDLE =  0x80003BC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003BC2
+Success!
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-144"]
+Hello from test module! ["modules\\test.exe", "WA-pipe-test-147"]
+RESOURCE =  2874432812344
+HANDLE =  0x80003C82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003C82
+Success!
+RESOURCE =  2249120936856
+HANDLE =  0x80003C42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003C42
+Success!
+RESOURCE =  2183956054744
+HANDLE =  0x80003D02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003D02
+Success!
+RESOURCE =  2709077030440
+HANDLE =  0x80003CC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003CC2
+Success!
+RESOURCE =  2557994857096
+HANDLE =  0x80002F82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002F82
+Success!
+RESOURCE =  2267246682984
+HANDLE =  0x80002E42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002E42
+Success!
+RESOURCE =  1713811093208
+HANDLE =  0x80003D82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003D82
+Success!
+RESOURCE =  2737279999896
+HANDLE =  0x80003D42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003D42
+Success!
+RESOURCE =  2589190922936
+HANDLE =  0x80003E82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003E82
+Success!
+RESOURCE =  2303975162792
+HANDLE =  0x80003E42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003E42
+Success!
+RESOURCE =  2155284253544
+HANDLE =  0x80003F02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003F02
+Success!
+RESOURCE =  2768174041960
+HANDLE =  0x80003EC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003EC2
+Success!
+RESOURCE =  2340735418168
+HANDLE =  0x80003F82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003F82
+Success!
+RESOURCE =  2188620057368
+HANDLE =  0x80003F42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003F42
+Success!
+RESOURCE =  1909529425656
+HANDLE =  0x80004002
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004002
+Success!
+RESOURCE =  1563765048840
+HANDLE =  0x80003FC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003FC2
+Success!
+RESOURCE =  2212361861048
+HANDLE =  0x80004082
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004082
+Success!
+RESOURCE =  1997547173176
+HANDLE =  0x80004042
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004042
+Success!
+RESOURCE =  2710580689736
+HANDLE =  0x80004102
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004102
+Success!
+RESOURCE =  2494658312040
+HANDLE =  0x800040C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800040C2
+Success!
+RESOURCE =  1976245432488
+HANDLE =  0x80004182
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004182
+Success!
+RESOURCE =  1930853811384
+HANDLE =  0x80004142
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004142
+Success!
+RESOURCE =  2467255481992
+HANDLE =  0x80004202
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004202
+Success!
+RESOURCE =  2742365071992
+HANDLE =  0x800041C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800041C2
+Success!
+RESOURCE =  2850111275112
+HANDLE =  0x80004282
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004282
+Success!
+RESOURCE =  1456968898152
+HANDLE =  0x80003E02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003E02
+Success!
+RESOURCE =  2300096613464
+HANDLE =  0x80003DC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003DC2
+Success!
+RESOURCE =  1673587240504
+HANDLE =  0x800038C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800038C2
+Success!
+RESOURCE =  1552555690520
+HANDLE =  0x80003542
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003542
+Success!
+RESOURCE =  2034715509992
+HANDLE =  0x80002E02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002E02
+Success!
+RESOURCE =  1378800181784
+HANDLE =  0x80003842
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003842
+Success!
+RESOURCE =  2107395013800
+HANDLE =  0x800037C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800037C2
+Success!
+RESOURCE =  2784239398152
+HANDLE =  0x80003582
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003582
+Success!
+RESOURCE =  2446596320776
+HANDLE =  0x80003702
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003702
+Success!
+RESOURCE =  2865626808216
+HANDLE =  0x80003982
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003982
+Success!
+RESOURCE =  2445378139208
+HANDLE =  0x80003782
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003782
+Success!
+RESOURCE =  1365807004376
+HANDLE =  0x80003642
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003642
+Success!
+RESOURCE =  2872435721768
+HANDLE =  0x80003002
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003002
+Success!
+RESOURCE =  1681174232376
+HANDLE =  0x80003102
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003102
+Success!
+RESOURCE =  1990242181480
+HANDLE =  0x800030C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800030C2
+Success!
+RESOURCE =  2161814318248
+HANDLE =  0x80003142
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003142
+Success!
+RESOURCE =  1806830524792
+HANDLE =  0x80003302
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003302
+Success!
+RESOURCE =  2596427653176
+HANDLE =  0x80002E82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002E82
+Success!
+RESOURCE =  1793376189304
+HANDLE =  0x80003942
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003942
+Success!
+RESOURCE =  1654755561096
+HANDLE =  0x80003182
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003182
+Success!
+RESOURCE =  2154001683224
+HANDLE =  0x80002F42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002F42
+Success!
+RESOURCE =  2750440492232
+HANDLE =  0x80003482
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003482
+Success!
+RESOURCE =  1723174704456
+HANDLE =  0x80003202
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003202
+Success!
+RESOURCE =  2481807382696
+HANDLE =  0x80002EC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002EC2
+Success!
+RESOURCE =  1911248130056
+HANDLE =  0x80003682
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003682
+Success!
+RESOURCE =  2267383549608
+HANDLE =  0x80003442
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003442
+Success!
+RESOURCE =  2456823618200
+HANDLE =  0x80003742
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003742
+Success!
+RESOURCE =  2391808610392
+HANDLE =  0x800032C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800032C2
+Success!
+RESOURCE =  3010928775048
+HANDLE =  0x80003082
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003082
+Success!
+RESOURCE =  1352800225432
+HANDLE =  0x80003382
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003382
+Success!
+RESOURCE =  2840536371096
+HANDLE =  0x80003402
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003402
+Success!
+RESOURCE =  1669915971688
+HANDLE =  0x80003342
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003342
+Success!
+RESOURCE =  2167670087480
+HANDLE =  0x80003882
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003882
+Success!
+RESOURCE =  1796620093352
+HANDLE =  0x80003902
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80003902
+Success!
+RESOURCE =  2268331435896
+HANDLE =  0x800034C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800034C2
+Success!
+RESOURCE =  1539945387176
+HANDLE =  0x80002FC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002FC2
+Success!
+RESOURCE =  2514003011432
+HANDLE =  0x800033C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800033C2
+Success!
+RESOURCE =  2078888034696
+HANDLE =  0x80004242
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004242
+Success!
+RESOURCE =  1491056408664
+HANDLE =  0x80002F02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002F02
+Success!
+RESOURCE =  2531392133416
+HANDLE =  0x40001B42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x40001B42
+Success!
+RESOURCE =  2935405623192
+HANDLE =  0x80004302
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004302
+Success!
+RESOURCE =  2924463849896
+HANDLE =  0x80004342
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80004342
+Success!
+RESOURCE =  2941753159704
+HANDLE =  0xC0002D42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002D42
+Success!
+RESOURCE =  1638139364824
+HANDLE =  0xC0002CC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002CC2
+Success!
+RESOURCE =  2160031201656
+HANDLE =  0xC0002C82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002C82
+Success!
+RESOURCE =  1391388133832
+HANDLE =  0xC0002102
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002102
+Success!
+RESOURCE =  2070555787512
+HANDLE =  0xC0002082
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002082
+Success!
+RESOURCE =  1956019056488
+HANDLE =  0xC0001242
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001242
+Success!
+RESOURCE =  1593622693608
+HANDLE =  0xC0002242
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002242
+Success!
+RESOURCE =  2281156703560
+HANDLE =  0x40000082
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x40000082
+Success!
+RESOURCE =  1411323220504
+HANDLE =  0x800018C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800018C2
+Success!
+RESOURCE =  2457715383368
+HANDLE =  0xC0001EC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001EC2
+Success!
+RESOURCE =  2055116478392
+HANDLE =  0x40001B82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x40001B82
+Success!
+RESOURCE =  2094183226200
+HANDLE =  0xC0000BC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000BC2
+Success!
+RESOURCE =  2580278611768
+HANDLE =  0xC0001D42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001D42
+Success!
+RESOURCE =  2197576710872
+HANDLE =  0xC0002202
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002202
+Success!
+RESOURCE =  2315989254888
+HANDLE =  0xC0001E42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001E42
+Success!
+RESOURCE =  2635879826088
+HANDLE =  0xC0001F42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001F42
+Success!
+RESOURCE =  2470423613160
+HANDLE =  0xC0001F02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001F02
+Success!
+RESOURCE =  1363067159832
+HANDLE =  0x80002842
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002842
+Success!
+RESOURCE =  2678041550328
+HANDLE =  0x800023C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800023C2
+Success!
+RESOURCE =  2050831221832
+HANDLE =  0xC00020C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC00020C2
+Success!
+RESOURCE =  2573973719512
+HANDLE =  0xC0002182
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002182
+Success!
+RESOURCE =  2061745982008
+HANDLE =  0xC0001E02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001E02
+Success!
+RESOURCE =  2914236208744
+HANDLE =  0x40001802
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x40001802
+Success!
+RESOURCE =  2206216610456
+HANDLE =  0xC0002342
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002342
+Success!
+RESOURCE =  2577165723320
+HANDLE =  0xC00021C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC00021C2
+Success!
+RESOURCE =  1699539337608
+HANDLE =  0x80002A42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002A42
+Success!
+RESOURCE =  2174610477096
+HANDLE =  0xC0000542
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000542
+Success!
+RESOURCE =  2306524048952
+HANDLE =  0xC0002B02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002B02
+Success!
+RESOURCE =  1451975834632
+HANDLE =  0xC0002B42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002B42
+Success!
+RESOURCE =  2024225536536
+HANDLE =  0xC0002282
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002282
+Success!
+RESOURCE =  2071423755080
+HANDLE =  0xC00022C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC00022C2
+Success!
+RESOURCE =  2215505434936
+HANDLE =  0x40000302
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x40000302
+Success!
+RESOURCE =  2158853950840
+HANDLE =  0xC0002BC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002BC2
+Success!
+RESOURCE =  2272734018072
+HANDLE =  0xC0002042
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002042
+Success!
+RESOURCE =  2539915379928
+HANDLE =  0xC0001FC2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001FC2
+Success!
+RESOURCE =  2461733161880
+HANDLE =  0x800042C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800042C2
+Success!
+RESOURCE =  2012765559384
+HANDLE =  0xC0002142
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002142
+Success!
+RESOURCE =  1884798441512
+HANDLE =  0x80002302
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002302
+Success!
+RESOURCE =  2444262325992
+HANDLE =  0xC0002B82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002B82
+Success!
+RESOURCE =  2588179223048
+HANDLE =  0xC0002C42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002C42
+Success!
+RESOURCE =  2289795158696
+HANDLE =  0x80001942
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80001942
+Success!
+RESOURCE =  1279546109224
+HANDLE =  0xC0000F42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000F42
+Success!
+RESOURCE =  2404168385128
+HANDLE =  0x80002942
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002942
+Success!
+RESOURCE =  1729007656200
+HANDLE =  0xC0000C82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000C82
+Success!
+RESOURCE =  3108748520920
+HANDLE =  0x800028C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800028C2
+Success!
+RESOURCE =  1502721207976
+HANDLE =  0xC0000E82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000E82
+Success!
+RESOURCE =  2308280445144
+HANDLE =  0x80002A82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002A82
+Success!
+RESOURCE =  2281532685080
+HANDLE =  0x800029C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800029C2
+Success!
+RESOURCE =  2772927182472
+HANDLE =  0xC0001342
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001342
+Success!
+RESOURCE =  2398192993240
+HANDLE =  0x800017C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800017C2
+Success!
+RESOURCE =  1665173362984
+HANDLE =  0xC0001782
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001782
+Success!
+RESOURCE =  2310880500088
+HANDLE =  0xC0000F02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000F02
+Success!
+RESOURCE =  2195727518552
+HANDLE =  0xC0001142
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001142
+Success!
+RESOURCE =  2232040366328
+HANDLE =  0xC00012C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC00012C2
+Success!
+RESOURCE =  1750001327192
+HANDLE =  0xC0001582
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001582
+Success!
+RESOURCE =  1793478191272
+HANDLE =  0xC0000682
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000682
+Success!
+RESOURCE =  1618996498520
+HANDLE =  0x80001902
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80001902
+Success!
+RESOURCE =  1403064413864
+HANDLE =  0xC00003C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC00003C2
+Success!
+RESOURCE =  2372923757608
+HANDLE =  0x80002902
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002902
+Success!
+RESOURCE =  1569309259672
+HANDLE =  0xC0000B42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000B42
+Success!
+RESOURCE =  1824315932280
+HANDLE =  0xC0000482
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000482
+Success!
+RESOURCE =  2396010646792
+HANDLE =  0x80002782
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002782
+Success!
+RESOURCE =  2833006785784
+HANDLE =  0x80002482
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002482
+Success!
+RESOURCE =  1866983738440
+HANDLE =  0x800026C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x800026C2
+Success!
+RESOURCE =  1648001938088
+HANDLE =  0xC0003C02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0003C02
+Success!
+RESOURCE =  1467594960616
+HANDLE =  0xC0003B42
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0003B42
+Success!
+RESOURCE =  2920703314168
+HANDLE =  0xC0001282
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001282
+Success!
+RESOURCE =  2154125313864
+HANDLE =  0xC00000C2
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC00000C2
+Success!
+RESOURCE =  2240919313240
+HANDLE =  0xC0000402
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0000402
+Success!
+RESOURCE =  2428668075128
+HANDLE =  0xC0001682
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001682
+Success!
+RESOURCE =  2567956534424
+HANDLE =  0xC0001A82
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0001A82
+Success!
+RESOURCE =  2402362848728
+HANDLE =  0x80002542
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0x80002542
+Success!
+RESOURCE =  1865325207960
+HANDLE =  0xC0002D02
+STATUS =  0
+STATUS2 =  0
+generated surface handle =  0xC0002D02
+Success!
+
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(188:9) panic: unable to unmarshal
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(188:9) panic: unable to unmarshal
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin:(9180): 9panic):  Error reading from pipepanic
+: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panicC:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin: (Error reading from pipe180
+:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9)C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180 :panic9: Error reading from pipe
+)C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin (panic180: :Error reading from pipe9
+) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panicC:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin: (Error reading from pipe180:
+9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9)C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin (panic180: :Error reading from pipe9
+) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panicC:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(: Error reading from pipe
+180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odinpanic(: 180Error reading from pipe:
+9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odinpanic(: Error reading from pipe
+180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panicC:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(: 180Error reading from pipe
+:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180Error reading from pipe:
+9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9)C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin (panic180: Error reading from pipe
+:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odinpanic(: 180Error reading from pipe:
+9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin)( 180panic:: Error reading from pipe9
+) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9) panic: Error reading from pipe
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odinC:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin((180180::99))  panicpanic: : Error reading from pipeError reading from pipe
+
+C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin(180:9)C:/Users/Igor/Documents/WorkspaceAlchemist/sdk/odin/ipc/windows.odin (panic180: :Error reading from pipe9
+) panic: Error reading from pipe
+

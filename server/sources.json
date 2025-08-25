@@ -1,0 +1,10 @@
+[
+  {
+    "name": "TestSAI",
+    "kind": "SAI",
+    "connection_data": {
+      "api_key": "p8HRnovyj0uySmESUD854Q",
+      "template": "64381df84b6b113cc3368ffa"
+    }
+  }
+]
