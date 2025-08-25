@@ -414,16 +414,6 @@ process_animations_and_primitives :: proc(
     focus_setted: ^bool,
 ) {
     for it in containers {
-        /*children_clip_rect := cnt.children_clip_rect
-        children_clip_rect.x = cnt.x + father_pos.x
-        children_clip_rect.y = cnt.y + father_pos.y
-
-        intersect, intersection := check_rect_overlap(father_clip_rect, children_clip_rect)
-
-        if !intersect {
-            continue
-        }*/
-
         cnt := it^
 
         cnt.x += father_pos.x

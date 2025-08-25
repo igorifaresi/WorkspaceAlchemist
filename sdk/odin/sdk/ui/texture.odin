@@ -1,15 +1,19 @@
 package ui
 
 import "core:math"
+import "core:fmt"
 
-@(plugin_callable)
 texture :: proc(
     handle: rawptr,
     _bounds: Rect = {},
     colors: [4][4]f32 = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}},
+    uv0: [2]f32 = {0, 0},
+    uv1: [2]f32 = {1, 1},
     loc := #caller_location,
 ) -> Component_Return_Rect {
     cnt := new_container_with_bounds(_bounds, {-1, -1})
+
+    fmt.println(cnt.bounds)
 
     push_id(loc)
 
@@ -21,9 +25,11 @@ texture :: proc(
     push_transparency(fade_in_animation.value.x)
 
     push_texture(cnt, {
-        bounds = cnt.bounds,
+        bounds = {0, 0, cnt.bounds.w, cnt.bounds.h},
         handle = handle,
         colors = colors,
+        uv0    = uv0,
+        uv1    = uv1,
     })
 
     pop_transparency()

@@ -19,8 +19,8 @@ import "sdk:sdk"
 import "sdk:sdk/ui"
 import "sdk:sdk/ipc"
 
-ICON_ATLAS_WIDTH :: 4096
-ICON_ATLAS_HEIGHT :: 4096
+ICON_ATLAS_WIDTH :: 1024
+ICON_ATLAS_HEIGHT :: 1024
 
 Event_Kind :: enum {
     Empty,
@@ -63,6 +63,7 @@ Application_Manifest :: struct {
 
 manifests: small_array.Small_Array(64, Application_Manifest)
 instances: small_array.Small_Array(64, Application_Instance)
+icon_atlas: rawptr
 instances_counter := 0
 @(thread_local) my_instance: ^Application_Instance
 
@@ -166,7 +167,7 @@ read_all_manifests :: proc() {
         for y in 0..<r.h {
             for x in 0..<r.w {
                 pixel := bytes.buffer_next(&imgs[i].pixels, 4)
-                idx := (y * ICON_ATLAS_WIDTH + x) * size_of([4]byte)
+                idx := (y + r.y) * ICON_ATLAS_WIDTH * size_of([4]byte) + (x + r.x) * size_of([4]byte)
                 
                 atlas[idx + 0] = pixel[0]
                 atlas[idx + 1] = pixel[1]
@@ -176,7 +177,16 @@ read_all_manifests :: proc() {
         }
     }
 
-    ui.load_texture(atlas, ICON_ATLAS_WIDTH, ICON_ATLAS_HEIGHT)
+    icon_atlas = ui.load_texture(atlas, ICON_ATLAS_WIDTH, ICON_ATLAS_HEIGHT)
+
+    for r in rects {
+        m: Application_Manifest
+        m.icon_uv0.x = cast(f32)(r.x) / ICON_ATLAS_WIDTH
+        m.icon_uv0.y = cast(f32)(r.y) / ICON_ATLAS_HEIGHT
+        m.icon_uv1.x = cast(f32)(r.x + r.w) / ICON_ATLAS_WIDTH
+        m.icon_uv1.y = cast(f32)(r.y + r.h) / ICON_ATLAS_HEIGHT
+        small_array.push(&manifests, m)
+    }
 
     fmt.println(rects)
 }

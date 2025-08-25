@@ -24,6 +24,14 @@ c: ui.Context
 
 plat: platform.Platform
 
+draw_icon :: proc(
+	manifest: Application_Manifest,
+	rect: ui.Rect = {},
+	loc := #caller_location,
+) {
+	ui.texture(icon_atlas, rect, uv0=manifest.icon_uv0, uv1=manifest.icon_uv1, loc=loc)
+}
+
 main :: proc() {
 	main_allocator_mutex: mem.Mutex_Allocator
 	temp_allocator_mutex: mem.Mutex_Allocator
@@ -37,13 +45,13 @@ main :: proc() {
 	plat = platform.get_glfw_d3d11_platform()
 	plat.create_window(1200, 600, "Yay")
 
-	read_all_manifests()
-
 	ui.load_font_palette()
 		
 	ui.setup_render_d3d11(plat.get_dxgi_window())	
 	ui.init_context(&c, context.allocator)
 	ui.set_context(&c)
+
+	read_all_manifests()
 
 	//instantiate_module("test")
 	//instantiate_module("test")
@@ -171,6 +179,14 @@ main :: proc() {
 			ui.inc_zindex()
 			ui.cubic_bezier(v1_pos, v1_pos + {200, 0}, v2_pos - {200, 0}, v2_pos, {0.27, 0.27, 0.8, 1.0})
 		}
+
+		for m, i in small_array.slice(&manifests) {
+			//fmt.println(m, i)
+			draw_icon(m, {x = cast(f32)i * 64, y = 0, w = 64, h = 64})
+			//ui.button("Yay", {x = cast(f32)i * 64, y = 0, w = 64, h = 64})
+		}
+
+		//ui.texture(icon_atlas, { w = 512, h = 512 })
 
 		ui.end_frame()
 

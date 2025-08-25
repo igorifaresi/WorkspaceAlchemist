@@ -200,6 +200,8 @@ Primitive_Rect :: struct {
 Primitive_Texture :: struct {
     bounds: Rect,
     handle: rawptr,
+    uv0: [2]f32,
+    uv1: [2]f32,
     colors: [4][4]f32,
 }
 

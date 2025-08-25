@@ -96,7 +96,7 @@ load_texture :: proc(pixels: []byte, width: int, height: int) -> rawptr {
 
     tex_srd: D3D11.SUBRESOURCE_DATA
     tex_srd.pSysMem     = raw_data(pixels)
-    tex_srd.SysMemPitch = cast(u32)width
+    tex_srd.SysMemPitch = cast(u32)(width * size_of([4]byte))
 
     tex: ^D3D11.ITexture2D
     device->CreateTexture2D(&tex_desc, &tex_srd, &tex)
@@ -424,8 +424,8 @@ draw_ui_primitives_d3d11 :: proc(primitives: []Primitive, window_width: f32, win
 			vertex_instance[instance_qnt] = {}
 			vertex_instance[instance_qnt].pos0 = { prim.bounds.x, prim.bounds.y }
 			vertex_instance[instance_qnt].pos1 = { prim.bounds.x, prim.bounds.y } + { prim.bounds.w, prim.bounds.h }
-			vertex_instance[instance_qnt].uv0 = [2]f32{0, 1}
-			vertex_instance[instance_qnt].uv1 = [2]f32{1, 0}
+			vertex_instance[instance_qnt].uv0 = {prim.uv0.x, prim.uv1.y}
+			vertex_instance[instance_qnt].uv1 = {prim.uv1.x, prim.uv0.y}
 			vertex_instance[instance_qnt].color0 = prim.colors[0]
 			vertex_instance[instance_qnt].color1 = prim.colors[1]
 			vertex_instance[instance_qnt].color2 = prim.colors[2]
