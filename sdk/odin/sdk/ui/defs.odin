@@ -99,6 +99,7 @@ Animation_State :: struct {
     target: [4]f32,
     value: [4]f32,
     duration: f32,
+    last_update_frame_counter: int,
 }
 
 Control_Rect_Flags_Set :: enum {
@@ -135,6 +136,7 @@ Control_Rect_State :: struct {
     uptime: f32,
     last_click_uptime: f32,
     last_bounds: Rect,
+    last_update_frame_counter: int,
     id: ID,
 }
 

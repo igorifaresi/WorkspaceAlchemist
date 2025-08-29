@@ -317,6 +317,18 @@ end_frame :: proc() {
         return 0
     }
     sort.bubble_sort_proc(c.primitive_buffer[:], z_sort_proc_primitive)
+
+    for key, state in c.control_rect_state_table {
+        if state.last_update_frame_counter != c.frame_counter {
+            delete_key(&c.control_rect_state_table, key)
+        }    
+    }
+
+    for key, state in c.animation_state_table {
+        if state.last_update_frame_counter != c.frame_counter {
+            delete_key(&c.animation_state_table, key)
+        }    
+    }
 }
 
 process_control_rects :: proc(
@@ -368,6 +380,7 @@ process_control_rects :: proc(
         }
 
         state.last_bounds = bounds
+        state.last_update_frame_counter = c.frame_counter
 
         if state.click || state.hold {
             state.movable_marker_pos.x = (cast(f32)c.io.mouse_pos.x - cast(f32)bounds.x) / cast(f32)bounds.w
@@ -459,7 +472,12 @@ process_animations_and_primitives :: proc(
             switch animation.kind {
             case .X:
                 new_value := math.lerp(animation.value.x, animation.target.x, 1 - math.pow(2.0, -4.0 * c.io.delta_time * speed_factor))
-                animation.c.animation_state_table[animation.id] = Animation_State{ value = {new_value, 0, 0, 0}, target = animation.target.x, duration = animation.duration }
+                animation.c.animation_state_table[animation.id] = Animation_State{
+                    value = {new_value, 0, 0, 0},
+                    target = animation.target.x,
+                    duration = animation.duration,
+                    last_update_frame_counter = c.frame_counter,
+                }
             case .Position:
             case .Color:            
                 r := math.lerp(animation.value.r, animation.target.r, 1 - math.pow(2.0, -4.0 * c.io.delta_time * speed_factor))
@@ -467,7 +485,12 @@ process_animations_and_primitives :: proc(
                 b := math.lerp(animation.value.b, animation.target.b, 1 - math.pow(2.0, -4.0 * c.io.delta_time * speed_factor))
                 a := math.lerp(animation.value.a, animation.target.a, 1 - math.pow(2.0, -4.0 * c.io.delta_time * speed_factor))
                 
-                animation.c.animation_state_table[animation.id] = Animation_State{ value = {r, g, b, a}, target = animation.target.x, duration = animation.duration }
+                animation.c.animation_state_table[animation.id] = Animation_State{
+                    value = {r, g, b, a},
+                    target = animation.target.x,
+                    duration = animation.duration,
+                    last_update_frame_counter = c.frame_counter,
+                }
             } 
         }
 

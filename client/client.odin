@@ -127,6 +127,45 @@ app_bar_more_apps_button :: proc(
 	return { cnt, control_rect }
 }
 
+app_launcher :: proc(alive := true, loc := #caller_location) -> ui.Component_Return_Rect {
+	cnt := ui.new_container()
+
+	ui.push_id(loc)
+
+	open_animation := ui.get_animation(cnt, "open")
+	open_animation.target.x = alive ? 1 : 0
+
+	if open_animation.value.x >= 0.0001 {
+		screen_rect := ui.Rect{0, 0, c.io.viewport.w, c.io.viewport.h}
+		backdrop_control_rect := ui.get_control_rect(cnt, screen_rect, "backdrop", {.Dont_Passthrough})
+		launcher_rect := ui.get_center_rect(screen_rect, 600, 400)
+
+		ui.push_rect(cnt, {
+		    bounds = screen_rect,
+			colors = ui.solid_color({0.0, 0.0, 0.0, 0.5 * open_animation.value.x}),
+			roundness = 0,
+		    softness = 0,
+		})
+
+		ui.push_transparency(open_animation.value.x)
+
+		ui.push_rect(cnt, {
+		    bounds = ui.offset_rect(launcher_rect, {0, (1 - open_animation.value.x) * -70}),
+			colors = ui.small_v_gradient(ui.COLOR_PRIMARY),
+			roundness = 4,
+		    softness = 1,
+		})
+
+		ui.pop_transparency()
+	
+		return { cnt, backdrop_control_rect }
+	}
+
+	ui.pop_id()
+
+	return { cnt, {} }
+}
+
 main :: proc() {
 	main_allocator_mutex: mem.Mutex_Allocator
 	temp_allocator_mutex: mem.Mutex_Allocator
@@ -277,6 +316,8 @@ main :: proc() {
 
 		//ui.texture(icon_atlas, { w = 512, h = 512 })
 
+		@(static) launcher := false
+
 		ui.begin_row()
 		{
 			for manifest, i in small_array.slice(&manifests) {
@@ -284,9 +325,20 @@ main :: proc() {
 				app_bar_button(manifest)
 				ui.pop_id()
 			}
-			app_bar_more_apps_button()
+			if app_bar_more_apps_button().click {
+				launcher = true
+				fmt.println("True")
+			}
 		}
 		ui.end()
+
+		ui.inc_zindex()
+		ui.inc_zindex()
+		ui.inc_zindex()
+		if app_launcher(launcher).click {
+			launcher = false
+			fmt.println("Hidden")
+		}
 
 		ui.end_frame()
 
