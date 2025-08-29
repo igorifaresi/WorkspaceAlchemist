@@ -135,6 +135,17 @@ horizontal_gradient :: proc(a: [4]f32, b: [4]f32) -> [4][4]f32 {
     return colors
 }
 
+vertical_gradient :: proc(a: [4]f32, b: [4]f32) -> [4][4]f32 {
+    colors := [4][4]f32{
+        [4]f32{a.r, a.g, a.b, a.a},
+        [4]f32{a.r, a.g, a.b, a.a},
+        [4]f32{b.r, b.g, b.b, b.a},
+        [4]f32{b.r, b.g, b.b, b.a},
+    }
+
+    return colors
+}
+
 set_lightness :: proc(c: [4]f32, lightness: f32) -> [4]f32 {
     color := c
     color.r *= lightness
@@ -272,6 +283,31 @@ cut_rect_bottom :: proc(src: ^Rect, amount: f32) -> (cut: Rect) {
     cut = Rect{ src.x, src.y + src.h - amount, src.w, amount }
     src.h -= amount
     return cut
+}
+
+scale_rect :: proc(src: Rect, amount_in_units: f32) -> Rect {
+    result: Rect
+    result.x = src.x - amount_in_units
+    result.y = src.y - amount_in_units
+    result.w = src.w + amount_in_units * 2
+    result.h = src.h + amount_in_units * 2
+    return result
+}
+
+trim_rect :: proc(src: Rect, amount_in_units: f32) -> Rect {
+    result: Rect
+    result.x = src.x + amount_in_units
+    result.y = src.y + amount_in_units
+    result.w = src.w - amount_in_units * 2
+    result.h = src.h - amount_in_units * 2
+    return result
+}
+
+offset_rect :: proc(src: Rect, offset: [2]f32) -> Rect {
+    result := src
+    result.x += offset.x
+    result.y += offset.y
+    return result
 }
 
 remove_padding_rect :: proc(src: Rect, padding: Padding) -> Rect {

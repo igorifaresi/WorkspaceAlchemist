@@ -6,14 +6,12 @@ import "core:fmt"
 texture :: proc(
     handle: rawptr,
     _bounds: Rect = {},
-    colors: [4][4]f32 = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}},
+    colors := SOLID_WHITE,
     uv0: [2]f32 = {0, 0},
     uv1: [2]f32 = {1, 1},
     loc := #caller_location,
 ) -> Component_Return_Rect {
     cnt := new_container_with_bounds(_bounds, {-1, -1})
-
-    fmt.println(cnt.bounds)
 
     push_id(loc)
 

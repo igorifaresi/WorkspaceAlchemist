@@ -32,6 +32,101 @@ draw_icon :: proc(
 	ui.texture(icon_atlas, rect, uv0=manifest.icon_uv0, uv1=manifest.icon_uv1, loc=loc)
 }
 
+app_bar_button :: proc(
+	manifest: Application_Manifest,
+	_bounds: ui.Rect = {},
+	loc := #caller_location,
+) -> ui.Component_Return_Rect {
+	cnt := ui.new_container_with_bounds(_bounds, {64, 64})
+
+	ui.push_id(loc)
+
+	control_rect := ui.get_control_rect(cnt, {0, 0, cnt.bounds.w, cnt.bounds.h}, "*")
+
+	hover_animation := ui.get_animation(cnt, "hover")
+
+	hover_animation.target.x = control_rect.hover ? 1 : 0
+
+	icon_bounds := ui.Rect{
+		x = 0,
+		y = hover_animation.value.x * cnt.bounds.h / 4,
+		w = cnt.bounds.w,
+		h = cnt.bounds.h,
+	}
+
+	ui.push_texture(cnt, {
+		bounds = ui.scale_rect(ui.offset_rect(icon_bounds, {1, 2}), 2),
+		colors = ui.solid_color(ui.COLOR_SHADOW),
+		handle = icon_atlas,
+		uv0 = manifest.icon_uv0,
+		uv1 = manifest.icon_uv1,
+	})
+
+	ui.push_texture(cnt, {
+		bounds = icon_bounds,
+		colors = ui.vertical_gradient(
+			ui.WHITE,
+			math.lerp(ui.WHITE, [4]f32{1.5, 1.5, 1.5, 1}, hover_animation.value.x),
+		),
+		handle = icon_atlas,
+		uv0 = manifest.icon_uv0,
+		uv1 = manifest.icon_uv1,
+	})	
+
+	ui.pop_id()
+
+	return { cnt, control_rect }
+}
+
+app_bar_more_apps_button :: proc(
+	_bounds: ui.Rect = {},
+	loc := #caller_location,
+) -> ui.Component_Return_Rect {
+	cnt := ui.new_container_with_bounds(_bounds, {64, 64})
+
+	ui.push_id(loc)
+
+	hover_animation := ui.get_animation(cnt, "hover")
+
+
+	button_rect := ui.trim_rect({0, 0, cnt.bounds.w, cnt.bounds.h}, 10)
+	control_rect := ui.get_control_rect(cnt, button_rect, "*")
+
+	hover_animation.target.x = control_rect.hover ? 1 : 0
+
+	for y in 0..<3 {
+		for x in 0..<3 {
+			GAP :: 4
+			SPACING :: 1
+
+			spacing := SPACING + hover_animation.value.x * GAP
+
+			cell_rect := ui.Rect{
+				x = (button_rect.w / 3) * f32(x) + max(0, f32(x) * spacing) + button_rect.x,
+				y = (button_rect.h / 3) * f32(y) + max(0, f32(y) * spacing) + button_rect.y,
+				w = button_rect.w / 3 - SPACING * 3,
+				h = button_rect.h / 3 - SPACING * 3,
+			}
+
+			cell_rect.x -= hover_animation.value.x * (GAP / 2 + SPACING * 2)
+			cell_rect.y -= hover_animation.value.x * (GAP / 2 + SPACING * 2)
+
+			c := math.lerp(ui.WHITE, ui.WHITE, hover_animation.value.x)
+
+			ui.push_rect(cnt, {
+		        bounds = cell_rect,
+				colors = ui.solid_color(c),
+				roundness = 1,
+		        softness = 1,
+		    })
+		}
+	}
+
+	ui.pop_id()
+
+	return { cnt, control_rect }
+}
+
 main :: proc() {
 	main_allocator_mutex: mem.Mutex_Allocator
 	temp_allocator_mutex: mem.Mutex_Allocator
@@ -102,7 +197,7 @@ main :: proc() {
 		@(static) b1: bool
 		@(static) b2: bool
 
-		ui.begin_column({ 10, 10, 300, -1 })
+		ui.begin_column({ 10, 200, 300, -1 })
 		{
 			if ui.button("Spawn test window").release {
 				instantiate_application("test")
@@ -180,13 +275,18 @@ main :: proc() {
 			ui.cubic_bezier(v1_pos, v1_pos + {200, 0}, v2_pos - {200, 0}, v2_pos, {0.27, 0.27, 0.8, 1.0})
 		}
 
-		for m, i in small_array.slice(&manifests) {
-			//fmt.println(m, i)
-			draw_icon(m, {x = cast(f32)i * 64, y = 0, w = 64, h = 64})
-			//ui.button("Yay", {x = cast(f32)i * 64, y = 0, w = 64, h = 64})
-		}
-
 		//ui.texture(icon_atlas, { w = 512, h = 512 })
+
+		ui.begin_row()
+		{
+			for manifest, i in small_array.slice(&manifests) {
+				ui.push_id(i)
+				app_bar_button(manifest)
+				ui.pop_id()
+			}
+			app_bar_more_apps_button()
+		}
+		ui.end()
 
 		ui.end_frame()
 
