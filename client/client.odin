@@ -17,6 +17,7 @@ import "sdk:sdk/platform"
 import "sdk:sdk/ipc"
 import "sdk:sdk/ui"
 import "sdk:sdk/http"
+import "sdk:sdk/render"
 
 running := true
 
@@ -178,10 +179,10 @@ main :: proc() {
 
 	plat = platform.get_glfw_d3d11_platform()
 	plat.create_window(1200, 600, "Yay")
-
-	ui.load_font_palette()
 		
-	ui.setup_render_d3d11(plat.get_dxgi_window())	
+	render.setup(plat.get_dxgi_window())	
+
+	ui.load_font_palette(context.allocator)
 	ui.init_context(&c, context.allocator)
 	ui.set_context(&c)
 
@@ -220,7 +221,7 @@ main :: proc() {
 
 		for &it in small_array.slice(&instances) {
 			if !it.ready && it.surface_handle != nil {
-				it.surface_texture = ui.load_shared_texture(it.surface_handle)
+				it.surface_texture = render.load_shared_texture(it.surface_handle, .RGBA)
         		it.ready = true
 			}
 		}
@@ -342,7 +343,11 @@ main :: proc() {
 
 		ui.end_frame()
 
-		ui.draw_ui_primitives_d3d11(c.primitive_buffer[:], input.window_width, input.window_height, false)
+		render.draw_primitives(
+			ui.generate_render_primitives(),
+			input.window_width,
+			input.window_height,
+		)
 
 		plat.end_frame()
 		mem.arena_free_all(&frame_arena)

@@ -5,6 +5,7 @@ import "core:text/edit"
 import "core:strings"
 import stbtt "vendor:stb/truetype"
 import "base:runtime"
+import "../render"
 
 FRAME_ARENA_SUGGESTED_SIZE :: 1024 * 1024 * 24
 COLOR_PRIMARY :: [4]f32{0.19, 0.20, 0.21, 1.0}
@@ -205,7 +206,7 @@ Primitive_Rect :: struct {
 
 Primitive_Texture :: struct {
     bounds: Rect,
-    handle: rawptr,
+    handle: render.Texture_Handle,
     uv0: [2]f32,
     uv1: [2]f32,
     colors: [4][4]f32,

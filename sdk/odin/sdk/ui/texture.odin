@@ -3,8 +3,10 @@ package ui
 import "core:math"
 import "core:fmt"
 
+import "../render"
+
 texture :: proc(
-    handle: rawptr,
+    handle: render.Texture_Handle,
     _bounds: Rect = {},
     colors := SOLID_WHITE,
     uv0: [2]f32 = {0, 0},

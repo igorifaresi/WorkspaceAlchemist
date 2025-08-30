@@ -18,6 +18,7 @@ import "vendor:stb/rect_pack"
 import "sdk:sdk"
 import "sdk:sdk/ui"
 import "sdk:sdk/ipc"
+import "sdk:sdk/render"
 
 ICON_ATLAS_WIDTH :: 1024
 ICON_ATLAS_HEIGHT :: 1024
@@ -48,8 +49,8 @@ Application_Instance :: struct {
     blocked: bool,
     ready: bool,
     rect: ui.Rect,
-    surface_texture: rawptr,
-    surface_handle: win.HANDLE,
+    surface_texture: render.Texture_Handle,
+    surface_handle: render.Shared_Texture_Handle,
     mail_box: [dynamic]Event,
     mail_box_lock: sync.Mutex,
     output_connections: map[string][dynamic]Connection,
@@ -63,7 +64,7 @@ Application_Manifest :: struct {
 
 manifests: small_array.Small_Array(64, Application_Manifest)
 instances: small_array.Small_Array(64, Application_Instance)
-icon_atlas: rawptr
+icon_atlas: render.Texture_Handle
 instances_counter := 0
 @(thread_local) my_instance: ^Application_Instance
 
@@ -177,7 +178,7 @@ read_all_manifests :: proc() {
         }
     }
 
-    icon_atlas = ui.load_texture(atlas, ICON_ATLAS_WIDTH, ICON_ATLAS_HEIGHT)
+    icon_atlas = render.load_texture(atlas, ICON_ATLAS_WIDTH, ICON_ATLAS_HEIGHT, .RGBA)
 
     for r in rects {
         m: Application_Manifest
@@ -201,7 +202,7 @@ instantiate_loop :: proc(ptr: rawptr) {
 
     tmp: uintptr  
     ipc.receive_object_pipe(&pipe, &tmp)
-    instance.surface_handle = transmute(win.HANDLE)tmp
+    instance.surface_handle = transmute(render.Shared_Texture_Handle)tmp
 
     for {
         for sync.atomic_compare_exchange_strong(&instance.blocked, false, true) {

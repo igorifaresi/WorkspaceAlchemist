@@ -10,6 +10,7 @@ import "core:strconv"
 import "ui"
 import "ipc"
 import "platform"
+import "render"
 
 generate_main_pipe_name :: proc(instance_id: int) -> string {
     return fmt.tprintf("wa-pipe-%d", instance_id)
@@ -25,7 +26,7 @@ easy_start_ui_module :: proc(update: proc()) {
     pipe := ipc.open_named_pipe(generate_main_pipe_name(instance_id))
 
     ui.load_font_palette()
-    handle := ui.setup_render_d3d11_headless(400, 400)
+    handle := render.setup_headless(400, 400)
     ipc.send_object_pipe(&pipe, transmute(uintptr)handle)
     ui.init_context(&c, context.allocator)
     ui.set_context(&c)
@@ -41,7 +42,12 @@ easy_start_ui_module :: proc(update: proc()) {
         ui.begin_frame(frame_allocator)
         update()
         ui.end_frame()
-        ui.draw_ui_primitives_d3d11(c.primitive_buffer[:], c.io.viewport.w, c.io.viewport.h, true)
+        render.draw_primitives(
+            ui.generate_render_primitives(),
+            c.io.viewport.w,
+            c.io.viewport.h,
+            true,
+        )
 
         mem.arena_free_all(&arena)
     }

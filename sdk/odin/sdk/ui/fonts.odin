@@ -2,6 +2,8 @@ package ui
 
 import stbtt "vendor:stb/truetype"
 
+import "../render"
+
 FONT_SIZES :: []int{14, 16, 20, 24}
 FONT_RANGE_START :: 0x00
 FONT_RANGE_SIZE :: 0xff
@@ -46,10 +48,17 @@ FONT_SIZES_TRANSLATION := [Font_Size]int {
 }
 
 font_palette: ^Font_Palette
+font_atlas: render.Texture_Handle
 
-load_font_palette :: proc() {
-	font_palette = new(Font_Palette)
+load_font_palette :: proc(allocator := context.allocator) {
+	font_palette = new(Font_Palette, allocator)
 	copy_slice((cast([^]byte)font_palette)[:size_of(Font_Palette)], FONT_ATLAS_MAP_SOURCE)
+	font_atlas = render.load_texture(
+		FONT_ATLAS_BITMAP_SOURCE,
+		FONT_ATLAS_WIDTH,
+		FONT_ATLAS_HEIGHT,
+		.R,
+	)
 }
 
 get_font :: proc(size: Font_Size, kind: Font_Kind) -> Font {

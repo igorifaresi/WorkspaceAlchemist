@@ -1,6 +1,6 @@
 #+build windows
 
-package ui
+package render
 
 import win "core:sys/windows"
 import D3D11 "vendor:directx/d3d11"
@@ -11,6 +11,10 @@ import glm "core:math/linalg/glsl"
 import "core:fmt"
 import stbtt "vendor:stb/truetype"
 import "core:math"
+import "core:mem"
+
+Texture_Handle :: ^D3D11.IShaderResourceView
+Shared_Texture_Handle :: win.HANDLE
 
 shaders_hlsl := #load("assets/shader.hlsl")
 
@@ -30,36 +34,40 @@ D3D11_Context :: struct {
 	rasterizer_state:    ^D3D11.IRasterizerState,
     sampler_state:       ^D3D11.ISamplerState,
     blend_state:         ^D3D11.IBlendState,
-    font_atlas_srv:      ^D3D11.IShaderResourceView,
     viewport:             D3D11.VIEWPORT,
 }
 
-D3D11_Vertex :: struct #align(16) {
+Vertex :: struct #align(16) {
 	idx: glm.vec2,
 	screen_size: glm.vec2,			
 }
 
-D3D11_UI_Primitive :: struct #align(16) {
-	pos0: [2]f32,
-	pos1: [2]f32,
-	uv0: [2]f32,
-	uv1: [2]f32,
-	roundness: f32,
-	softness: f32,
-	flags: f32,
-	texture_idx: f32,
-	color0: [4]f32,
-	color1: [4]f32,
-	color2: [4]f32,
-	color3: [4]f32,
-	thickness: f32,
-	clip_vec: [4]f32,
-	angle: f32,
-}
-
 d3d11_context: D3D11_Context
 
-load_shared_texture :: proc(handle: win.HANDLE) -> rawptr {
+translate_format_to_d3d11 :: proc(format: Texture_Format) -> DXGI.FORMAT {
+	switch format {
+	case .RGBA:
+		return .R8G8B8A8_UNORM
+	case .R:
+		return .R8_UNORM
+	}
+	return .R8G8B8A8_UNORM
+}
+
+get_pixel_size :: proc(format: Texture_Format) -> int {
+	switch format {
+	case .RGBA:
+		return 4
+	case .R:
+		return 1
+	}
+	return 4
+}
+
+load_shared_texture :: proc(
+	handle: Shared_Texture_Handle,
+	format: Texture_Format,
+) -> Texture_Handle {
 	using d3d11_context
 	
 	resource: ^DXGI.IResource
@@ -81,8 +89,26 @@ load_shared_texture :: proc(handle: win.HANDLE) -> rawptr {
 	return tex_srv
 }
 
-load_texture :: proc(pixels: []byte, width: int, height: int) -> rawptr {
+load_texture :: proc(
+	pixels: []byte,
+	width: int,
+	height: int,
+	format: Texture_Format,
+	allocator := context.allocator,
+) -> Texture_Handle {
 	using d3d11_context
+
+	tex_data := transmute([][4]byte)pixels
+
+	if format == .R {
+		tex_data = make([][4]byte, len(pixels))
+		for &p, i in tex_data {
+			p[0] = 255
+			p[1] = 255
+			p[2] = 255
+			p[3] = pixels[i]
+		}
+	}
 	
     tex_desc := D3D11.TEXTURE2D_DESC{}
     tex_desc.Width            = cast(u32)width
@@ -95,7 +121,7 @@ load_texture :: proc(pixels: []byte, width: int, height: int) -> rawptr {
     tex_desc.BindFlags        = {.SHADER_RESOURCE}
 
     tex_srd: D3D11.SUBRESOURCE_DATA
-    tex_srd.pSysMem     = raw_data(pixels)
+    tex_srd.pSysMem     = raw_data(tex_data)
     tex_srd.SysMemPitch = cast(u32)(width * size_of([4]byte))
 
     tex: ^D3D11.ITexture2D
@@ -110,10 +136,14 @@ load_texture :: proc(pixels: []byte, width: int, height: int) -> rawptr {
 
     device->CreateShaderResourceView(tex, &tex_srv_desc, &tex_srv)
 
+    if format == .R {
+		free(&tex_data[0])
+	}
+
 	return tex_srv
 }
 
-setup_render_d3d11_common :: proc() {
+setup_d3d11_common :: proc() {
 	using d3d11_context
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,24 +163,24 @@ setup_render_d3d11_common :: proc() {
 	device->CreateVertexShader(vs_blob->GetBufferPointer(), vs_blob->GetBufferSize(), nil, &vertex_shader)
 
 	input_element_desc := [?]D3D11.INPUT_ELEMENT_DESC{
-		{ "INDEX"     , 0, .R32G32_FLOAT, 0, cast(u32)offset_of(D3D11_Vertex, idx)        , .VERTEX_DATA, 0 },
-		{ "SCREENSIZE", 0, .R32G32_FLOAT, 0, cast(u32)offset_of(D3D11_Vertex, screen_size), .VERTEX_DATA, 0 },
+		{ "INDEX"     , 0, .R32G32_FLOAT, 0, cast(u32)offset_of(Vertex, idx)        , .VERTEX_DATA, 0 },
+		{ "SCREENSIZE", 0, .R32G32_FLOAT, 0, cast(u32)offset_of(Vertex, screen_size), .VERTEX_DATA, 0 },
 		
-		{ "POS"  , 0, .R32G32_FLOAT      , 1, cast(u32)offset_of(D3D11_UI_Primitive, pos0)       , .INSTANCE_DATA, 1 },
-		{ "POS"  , 1, .R32G32_FLOAT      , 1, cast(u32)offset_of(D3D11_UI_Primitive, pos1)       , .INSTANCE_DATA, 1 },
-		{ "UV"   , 0, .R32G32_FLOAT      , 1, cast(u32)offset_of(D3D11_UI_Primitive, uv0)        , .INSTANCE_DATA, 1 },
-		{ "UV"   , 1, .R32G32_FLOAT      , 1, cast(u32)offset_of(D3D11_UI_Primitive, uv1)        , .INSTANCE_DATA, 1 },
-		{ "PARAM", 0, .R32_FLOAT         , 1, cast(u32)offset_of(D3D11_UI_Primitive, roundness)  , .INSTANCE_DATA, 1 },
-		{ "PARAM", 1, .R32_FLOAT         , 1, cast(u32)offset_of(D3D11_UI_Primitive, softness)   , .INSTANCE_DATA, 1 },
-		{ "PARAM", 2, .R32_FLOAT         , 1, cast(u32)offset_of(D3D11_UI_Primitive, flags)      , .INSTANCE_DATA, 1 },
-		{ "PARAM", 3, .R32_FLOAT         , 1, cast(u32)offset_of(D3D11_UI_Primitive, texture_idx), .INSTANCE_DATA, 1 },
-		{ "COLOR", 0, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(D3D11_UI_Primitive, color0)     , .INSTANCE_DATA, 1 },
-		{ "COLOR", 1, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(D3D11_UI_Primitive, color1)     , .INSTANCE_DATA, 1 },
-		{ "COLOR", 2, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(D3D11_UI_Primitive, color2)     , .INSTANCE_DATA, 1 },
-		{ "COLOR", 3, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(D3D11_UI_Primitive, color3)     , .INSTANCE_DATA, 1 },
-		{ "PARAM", 4, .R32_FLOAT         , 1, cast(u32)offset_of(D3D11_UI_Primitive, thickness)  , .INSTANCE_DATA, 1 },
-		{ "RECT" , 0, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(D3D11_UI_Primitive, clip_vec)   , .INSTANCE_DATA, 1 },
-		{ "ANGLE", 0, .R32_FLOAT         , 1, cast(u32)offset_of(D3D11_UI_Primitive, angle)      , .INSTANCE_DATA, 1 },
+		{ "POS"  , 0, .R32G32_FLOAT      , 1, cast(u32)offset_of(Primitive, pos0)       , .INSTANCE_DATA, 1 },
+		{ "POS"  , 1, .R32G32_FLOAT      , 1, cast(u32)offset_of(Primitive, pos1)       , .INSTANCE_DATA, 1 },
+		{ "UV"   , 0, .R32G32_FLOAT      , 1, cast(u32)offset_of(Primitive, uv0)        , .INSTANCE_DATA, 1 },
+		{ "UV"   , 1, .R32G32_FLOAT      , 1, cast(u32)offset_of(Primitive, uv1)        , .INSTANCE_DATA, 1 },
+		{ "PARAM", 0, .R32_FLOAT         , 1, cast(u32)offset_of(Primitive, roundness)  , .INSTANCE_DATA, 1 },
+		{ "PARAM", 1, .R32_FLOAT         , 1, cast(u32)offset_of(Primitive, softness)   , .INSTANCE_DATA, 1 },
+		{ "PARAM", 2, .R32_FLOAT         , 1, cast(u32)offset_of(Primitive, flags)      , .INSTANCE_DATA, 1 },
+		{ "PARAM", 3, .R32_FLOAT         , 1, cast(u32)offset_of(Primitive, texture_idx), .INSTANCE_DATA, 1 },
+		{ "COLOR", 0, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(Primitive, color0)     , .INSTANCE_DATA, 1 },
+		{ "COLOR", 1, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(Primitive, color1)     , .INSTANCE_DATA, 1 },
+		{ "COLOR", 2, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(Primitive, color2)     , .INSTANCE_DATA, 1 },
+		{ "COLOR", 3, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(Primitive, color3)     , .INSTANCE_DATA, 1 },
+		{ "PARAM", 4, .R32_FLOAT         , 1, cast(u32)offset_of(Primitive, thickness)  , .INSTANCE_DATA, 1 },
+		{ "RECT" , 0, .R32G32B32A32_FLOAT, 1, cast(u32)offset_of(Primitive, clip_vec)   , .INSTANCE_DATA, 1 },
+		{ "ANGLE", 0, .R32_FLOAT         , 1, cast(u32)offset_of(Primitive, angle)      , .INSTANCE_DATA, 1 },
 	}
 
 	device->CreateInputLayout(&input_element_desc[0], len(input_element_desc), vs_blob->GetBufferPointer(), vs_blob->GetBufferSize(), &input_layout)
@@ -202,36 +232,10 @@ setup_render_d3d11_common :: proc() {
 	}
     device->CreateBlendState(&blend_desc, &blend_state)
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    font_atlas_desc := D3D11.TEXTURE2D_DESC{}
-    font_atlas_desc.Width            = cast(u32)FONT_ATLAS_WIDTH
-    font_atlas_desc.Height           = cast(u32)FONT_ATLAS_HEIGHT
-    font_atlas_desc.MipLevels        = 1
-    font_atlas_desc.ArraySize        = 1
-    font_atlas_desc.Format           = .R8_UNORM
-    font_atlas_desc.SampleDesc.Count = 1
-    font_atlas_desc.Usage            = .IMMUTABLE
-    font_atlas_desc.BindFlags        = {.SHADER_RESOURCE}
-
-    font_atlas_srd: D3D11.SUBRESOURCE_DATA
-    font_atlas_srd.pSysMem     = raw_data(FONT_ATLAS_BITMAP_SOURCE)
-    font_atlas_srd.SysMemPitch = cast(u32)FONT_ATLAS_WIDTH
-
-    font_atlas: ^D3D11.ITexture2D
-    device->CreateTexture2D(&font_atlas_desc, &font_atlas_srd, &font_atlas)
-
-    srv_desc := D3D11.SHADER_RESOURCE_VIEW_DESC{}
-    srv_desc.Format = .R8_UNORM
-    srv_desc.ViewDimension = .TEXTURE2D
-    srv_desc.Texture2D.MipLevels = 1
-
-    device->CreateShaderResourceView(font_atlas, &srv_desc, &font_atlas_srv)
-
 	///////////////////////////////////////////////////////////////////////////////////////////////	
 
 	vertex_buffer_desc := D3D11.BUFFER_DESC{
-		ByteWidth      = size_of(D3D11_Vertex) * 4 + size_of(D3D11_UI_Primitive) * 1024 * 16,
+		ByteWidth      = size_of(Vertex) * 4 + size_of(Primitive) * 1024 * 16,
 		Usage          = .DYNAMIC,
 		BindFlags      = {.VERTEX_BUFFER},
 		CPUAccessFlags = {.WRITE},
@@ -239,7 +243,7 @@ setup_render_d3d11_common :: proc() {
 	device->CreateBuffer(&vertex_buffer_desc, nil, &vertex_buffer)
 }
 
-setup_render_d3d11_headless :: proc(width: f32, height: f32) -> win.HANDLE {
+setup_headless :: proc(width: f32, height: f32) -> Shared_Texture_Handle {
 	using d3d11_context
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -271,7 +275,7 @@ setup_render_d3d11_headless :: proc(width: f32, height: f32) -> win.HANDLE {
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
-	setup_render_d3d11_common()
+	setup_d3d11_common()
 
 	///////////////////////////////////////////////////////////////////////////////////////////////	
 
@@ -298,7 +302,7 @@ setup_render_d3d11_headless :: proc(width: f32, height: f32) -> win.HANDLE {
 	return handle
 }
 
-setup_render_d3d11 :: proc(native_window: DXGI.HWND) {
+setup :: proc(native_window: DXGI.HWND) {
 	using d3d11_context
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -349,12 +353,16 @@ setup_render_d3d11 :: proc(native_window: DXGI.HWND) {
 
 	device->CreateRenderTargetView(framebuffer, nil, &framebuffer_view)
 
-	setup_render_d3d11_common()
+	setup_d3d11_common()
 }
 
-textures_srvs: [64]^D3D11.IShaderResourceView
-
-draw_ui_primitives_d3d11 :: proc(primitives: []Primitive, window_width: f32, window_height: f32, render_to_texture := false) {
+draw_primitives :: proc(
+	primitives: []Primitive,
+	textures: []Texture_Handle,
+	window_width: f32,
+	window_height: f32,
+	headless := false,
+) {
 	using d3d11_context
 
 	viewport = D3D11.VIEWPORT{ 0, 0, window_width, window_height, 0, 1 }
@@ -366,7 +374,7 @@ draw_ui_primitives_d3d11 :: proc(primitives: []Primitive, window_width: f32, win
 	screen_size.x = f32(2.0 / cast(f64)window_width)
 	screen_size.y = f32(-2.0 / cast(f64)window_height)
 
-	vertex := cast([^]D3D11_Vertex)(mapped_subresource.pData)
+	vertex := cast([^]Vertex)(mapped_subresource.pData)
 	vertex[0] = { 
 		idx = {0, 0},
 		screen_size = screen_size,
@@ -384,121 +392,15 @@ draw_ui_primitives_d3d11 :: proc(primitives: []Primitive, window_width: f32, win
 		screen_size = screen_size,
 	}
 
-	instance_qnt := 0
-	textures_qnt := 0
-	vertex_instance := cast([^]D3D11_UI_Primitive)(cast(uintptr)mapped_subresource.pData + cast(uintptr)size_of(D3D11_Vertex) * 4)
+	vertex_instance := cast([^]Primitive)(cast(uintptr)mapped_subresource.pData + cast(uintptr)size_of(Vertex) * 4)
 
-	for it in primitives {
-		switch prim in it.u {
-		case Primitive_Line:
-			dx := prim.p0.x - prim.p1.x
-			dy := prim.p0.y - prim.p1.y
-			distance := math.sqrt(dx * dx + dy * dy) + 2
-			angle := math.atan2(dy, dx) + math.PI
-
-			vertex_instance[instance_qnt] = {}
-			vertex_instance[instance_qnt].pos0 = {
-				prim.p0.x,
-				prim.p0.y - prim.thickness / 2,
-			}
-			vertex_instance[instance_qnt].pos1 = {
-				prim.p0.x,
-				prim.p0.y - prim.thickness / 2
-			} + { distance, prim.thickness }
-			vertex_instance[instance_qnt].roundness = 0
-			vertex_instance[instance_qnt].softness = 1.5
-			vertex_instance[instance_qnt].color0 = prim.colors[0]
-			vertex_instance[instance_qnt].color1 = prim.colors[1]
-			vertex_instance[instance_qnt].color2 = prim.colors[2]
-			vertex_instance[instance_qnt].color3 = prim.colors[3]
-			vertex_instance[instance_qnt].thickness = 9999
-			vertex_instance[instance_qnt].angle = angle
-			vertex_instance[instance_qnt].clip_vec = {
-				cast(f32)(it.clip_rect.x),
-				cast(f32)(it.clip_rect.y),
-				cast(f32)(it.clip_rect.w + it.clip_rect.x),
-				cast(f32)(it.clip_rect.h + it.clip_rect.y),
-			}
-			instance_qnt += 1
-		case Primitive_Texture:
-			vertex_instance[instance_qnt] = {}
-			vertex_instance[instance_qnt].pos0 = { prim.bounds.x, prim.bounds.y }
-			vertex_instance[instance_qnt].pos1 = { prim.bounds.x, prim.bounds.y } + { prim.bounds.w, prim.bounds.h }
-			vertex_instance[instance_qnt].uv0 = {prim.uv0.x, prim.uv1.y}
-			vertex_instance[instance_qnt].uv1 = {prim.uv1.x, prim.uv0.y}
-			vertex_instance[instance_qnt].color0 = prim.colors[0]
-			vertex_instance[instance_qnt].color1 = prim.colors[1]
-			vertex_instance[instance_qnt].color2 = prim.colors[2]
-			vertex_instance[instance_qnt].color3 = prim.colors[3]
-			vertex_instance[instance_qnt].flags = 2
-			vertex_instance[instance_qnt].texture_idx = cast(f32)textures_qnt
-			vertex_instance[instance_qnt].clip_vec = {
-				cast(f32)(it.clip_rect.x),
-				cast(f32)(it.clip_rect.y),
-				cast(f32)(it.clip_rect.w + it.clip_rect.x),
-				cast(f32)(it.clip_rect.h + it.clip_rect.y),
-			}
-
-			textures_srvs[textures_qnt] = cast(^D3D11.IShaderResourceView)prim.handle
-			instance_qnt += 1
-			textures_qnt += 1
-		case Primitive_Rect:
-			vertex_instance[instance_qnt] = {}
-			vertex_instance[instance_qnt].pos0 = { prim.bounds.x, prim.bounds.y }
-			vertex_instance[instance_qnt].pos1 = { prim.bounds.x, prim.bounds.y } + { prim.bounds.w, prim.bounds.h }
-			vertex_instance[instance_qnt].roundness = prim.roundness
-			vertex_instance[instance_qnt].softness = prim.softness
-			vertex_instance[instance_qnt].color0 = prim.colors[0]
-			vertex_instance[instance_qnt].color1 = prim.colors[1]
-			vertex_instance[instance_qnt].color2 = prim.colors[2]
-			vertex_instance[instance_qnt].color3 = prim.colors[3]
-			vertex_instance[instance_qnt].flags = 0
-			vertex_instance[instance_qnt].thickness = prim.thickness < 0.001 ? 9999 : prim.thickness
-			vertex_instance[instance_qnt].clip_vec = {
-				cast(f32)(it.clip_rect.x),
-				cast(f32)(it.clip_rect.y),
-				cast(f32)(it.clip_rect.w + it.clip_rect.x),
-				cast(f32)(it.clip_rect.h + it.clip_rect.y),
-			}
-			instance_qnt += 1
-		case Primitive_Text:
-			font := get_font(prim.size, prim.kind)
-
-			metrics := font.metrics
-
-			x := prim.pos.x
-			y := prim.pos.y
-			for r, idx in prim.text {
-				quad: stbtt.aligned_quad
-				stbtt.GetPackedQuad(raw_data(metrics[:]), FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, cast(i32)r - font.range_start, &x, &y, &quad, false)
-
-				vertex_instance[instance_qnt] = {}
-				vertex_instance[instance_qnt].pos0 = [2]f32{quad.x0, quad.y0 + font.y_offset}
-				vertex_instance[instance_qnt].pos1 = [2]f32{quad.x1, quad.y1 + font.y_offset}
-				vertex_instance[instance_qnt].uv0 = [2]f32{quad.s0, quad.t1}
-				vertex_instance[instance_qnt].uv1 = [2]f32{quad.s1, quad.t0}
-				vertex_instance[instance_qnt].color0 = prim.colors[0]
-				vertex_instance[instance_qnt].color1 = prim.colors[1]
-				vertex_instance[instance_qnt].color2 = prim.colors[2]
-				vertex_instance[instance_qnt].color3 = prim.colors[3]
-				vertex_instance[instance_qnt].flags = 1
-				vertex_instance[instance_qnt].clip_vec = {
-					cast(f32)(it.clip_rect.x),
-					cast(f32)(it.clip_rect.y),
-					cast(f32)(it.clip_rect.w + it.clip_rect.x),
-					cast(f32)(it.clip_rect.h + it.clip_rect.y),
-				}
-
-				instance_qnt += 1
-			}
-		}
-	}
+	mem.copy(vertex_instance, &primitives[0], len(primitives) * size_of(Primitive))
 
 	device_context->Unmap(vertex_buffer, 0)
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
-	if render_to_texture {
+	if headless {
 		device_context->ClearRenderTargetView(render_texture_view, &[4]f32{0.0, 0.0, 0.0, 0.0})
 	} else {		
 		device_context->ClearRenderTargetView(framebuffer_view, &[4]f32{0.0, 0.0, 0.1, 1.0})
@@ -507,8 +409,8 @@ draw_ui_primitives_d3d11 :: proc(primitives: []Primitive, window_width: f32, win
 	device_context->IASetPrimitiveTopology(.TRIANGLESTRIP)
 	device_context->IASetInputLayout(input_layout)
 	vbuffers := [2]^D3D11.IBuffer{ vertex_buffer, vertex_buffer }
-	vertex_buffer_stride := [2]u32{size_of(D3D11_Vertex), size_of(D3D11_UI_Primitive)}
-	vertex_buffer_offset := [2]u32{0, 4 * size_of(D3D11_Vertex)}
+	vertex_buffer_stride := [2]u32{size_of(Vertex), size_of(Primitive)}
+	vertex_buffer_offset := [2]u32{0, 4 * size_of(Vertex)}
 	device_context->IASetVertexBuffers(0, 2, &vbuffers[0], &vertex_buffer_stride[0], &vertex_buffer_offset[0])
 
 	device_context->VSSetShader(vertex_shader, nil, 0)
@@ -517,15 +419,10 @@ draw_ui_primitives_d3d11 :: proc(primitives: []Primitive, window_width: f32, win
 	device_context->RSSetState(rasterizer_state)
 
 	device_context->PSSetShader(pixel_shader, nil, 0)
-	device_context->PSSetShaderResources(0, 1, &font_atlas_srv)
-
-	if textures_qnt > 0 {
-		device_context->PSSetShaderResources(1, cast(u32)textures_qnt, &textures_srvs[0])
-	}
-
+	device_context->PSSetShaderResources(0, cast(u32)len(textures), &textures[0])
 	device_context->PSSetSamplers(0, 1, &sampler_state)
 
-	if render_to_texture {
+	if headless {
 		device_context->OMSetRenderTargets(1, &render_texture_view, nil)
 	} else {
 		device_context->OMSetRenderTargets(1, &framebuffer_view, nil)
@@ -535,9 +432,9 @@ draw_ui_primitives_d3d11 :: proc(primitives: []Primitive, window_width: f32, win
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
-	device_context->DrawInstanced(4, cast(u32)instance_qnt, 0, 0)
+	device_context->DrawInstanced(4, cast(u32)len(primitives), 0, 0)
 
-	if render_to_texture {
+	if headless {
 		device_context->Flush()
 	} else {	
 		swapchain->Present(1, {})

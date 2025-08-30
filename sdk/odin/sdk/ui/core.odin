@@ -8,6 +8,9 @@ import "core:strings"
 import "core:text/edit"
 import "core:sort"
 import "base:runtime"
+import stbtt "vendor:stb/truetype"
+
+import "../render"
 
 c: ^Context
 
@@ -507,4 +510,130 @@ process_animations_and_primitives :: proc(
             focus_setted,
         )
     }
+}
+
+generate_render_primitives :: proc() -> ([]render.Primitive, []render.Texture_Handle) {
+    result := make([dynamic]render.Primitive, c.frame_allocator)
+    textures := make([dynamic]render.Texture_Handle, c.frame_allocator)
+
+    append(&textures, font_atlas)
+
+    for it in c.primitive_buffer {
+        switch prim in it.u {
+        case Primitive_Line:
+            dx := prim.p0.x - prim.p1.x
+            dy := prim.p0.y - prim.p1.y
+            distance := math.sqrt(dx * dx + dy * dy) + 2
+            angle := math.atan2(dy, dx) + math.PI
+
+            render_primitive := render.Primitive{}
+            render_primitive.pos0 = {
+                prim.p0.x,
+                prim.p0.y - prim.thickness / 2,
+            }
+            render_primitive.pos1 = {
+                prim.p0.x,
+                prim.p0.y - prim.thickness / 2
+            } + { distance, prim.thickness }
+            render_primitive.roundness = 0
+            render_primitive.softness = 1.5
+            render_primitive.color0 = prim.colors[0]
+            render_primitive.color1 = prim.colors[1]
+            render_primitive.color2 = prim.colors[2]
+            render_primitive.color3 = prim.colors[3]
+            render_primitive.thickness = 9999
+            render_primitive.angle = angle
+            render_primitive.clip_vec = {
+                cast(f32)(it.clip_rect.x),
+                cast(f32)(it.clip_rect.y),
+                cast(f32)(it.clip_rect.w + it.clip_rect.x),
+                cast(f32)(it.clip_rect.h + it.clip_rect.y),
+            }
+            append(&result, render_primitive)
+        case Primitive_Texture:
+            texture_idx := -1
+
+            for tex, idx in textures {
+                if prim.handle == tex {
+                    texture_idx = idx
+                    break
+                }
+            }
+
+            if texture_idx == -1 {
+                texture_idx = len(textures)
+                append(&textures, prim.handle)
+            }
+
+            render_primitive := render.Primitive{}
+            render_primitive.pos0 = { prim.bounds.x, prim.bounds.y }
+            render_primitive.pos1 = { prim.bounds.x, prim.bounds.y } + { prim.bounds.w, prim.bounds.h }
+            render_primitive.uv0 = {prim.uv0.x, prim.uv1.y}
+            render_primitive.uv1 = {prim.uv1.x, prim.uv0.y}
+            render_primitive.color0 = prim.colors[0]
+            render_primitive.color1 = prim.colors[1]
+            render_primitive.color2 = prim.colors[2]
+            render_primitive.color3 = prim.colors[3]
+            render_primitive.flags = 2
+            render_primitive.texture_idx = cast(f32)texture_idx
+            render_primitive.clip_vec = {
+                cast(f32)(it.clip_rect.x),
+                cast(f32)(it.clip_rect.y),
+                cast(f32)(it.clip_rect.w + it.clip_rect.x),
+                cast(f32)(it.clip_rect.h + it.clip_rect.y),
+            }
+            append(&result, render_primitive)
+        case Primitive_Rect:
+            render_primitive := render.Primitive{}
+            render_primitive.pos0 = { prim.bounds.x, prim.bounds.y }
+            render_primitive.pos1 = { prim.bounds.x, prim.bounds.y } + { prim.bounds.w, prim.bounds.h }
+            render_primitive.roundness = prim.roundness
+            render_primitive.softness = prim.softness
+            render_primitive.color0 = prim.colors[0]
+            render_primitive.color1 = prim.colors[1]
+            render_primitive.color2 = prim.colors[2]
+            render_primitive.color3 = prim.colors[3]
+            render_primitive.flags = 0
+            render_primitive.thickness = prim.thickness < 0.001 ? 9999 : prim.thickness
+            render_primitive.clip_vec = {
+                cast(f32)(it.clip_rect.x),
+                cast(f32)(it.clip_rect.y),
+                cast(f32)(it.clip_rect.w + it.clip_rect.x),
+                cast(f32)(it.clip_rect.h + it.clip_rect.y),
+            }
+            append(&result, render_primitive)
+        case Primitive_Text:
+            font := get_font(prim.size, prim.kind)
+
+            metrics := font.metrics
+
+            x := prim.pos.x
+            y := prim.pos.y
+            for r, idx in prim.text {
+                quad: stbtt.aligned_quad
+                stbtt.GetPackedQuad(raw_data(metrics[:]), FONT_ATLAS_WIDTH, FONT_ATLAS_HEIGHT, cast(i32)r - font.range_start, &x, &y, &quad, false)
+
+                render_primitive := render.Primitive{}
+                render_primitive.pos0 = [2]f32{quad.x0, quad.y0 + font.y_offset}
+                render_primitive.pos1 = [2]f32{quad.x1, quad.y1 + font.y_offset}
+                render_primitive.uv0 = [2]f32{quad.s0, quad.t1}
+                render_primitive.uv1 = [2]f32{quad.s1, quad.t0}
+                render_primitive.color0 = prim.colors[0]
+                render_primitive.color1 = prim.colors[1]
+                render_primitive.color2 = prim.colors[2]
+                render_primitive.color3 = prim.colors[3]
+                render_primitive.flags = 2
+                render_primitive.texture_idx = 0
+                render_primitive.clip_vec = {
+                    cast(f32)(it.clip_rect.x),
+                    cast(f32)(it.clip_rect.y),
+                    cast(f32)(it.clip_rect.w + it.clip_rect.x),
+                    cast(f32)(it.clip_rect.h + it.clip_rect.y),
+                }
+                append(&result, render_primitive)
+            }
+        }
+    }
+
+    return result[:], textures[:]
 }
